@@ -14,10 +14,13 @@ export const AddCategory = ({ onNewCategory }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (inputValue.trim().length <= 1 || gifLimit <= 0) return;
 
-    onNewCategory(inputValue.trim(), gifLimit);
+    const trimmedCategory = inputValue.trim();
+    if (trimmedCategory.length <= 1 || gifLimit <= 0) return;
+
+    onNewCategory(trimmedCategory, gifLimit);
     setInputValue('');
+    setGifLimit(10); // Restablece el valor por defecto
   };
 
   return (
