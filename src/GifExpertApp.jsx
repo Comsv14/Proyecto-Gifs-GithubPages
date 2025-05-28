@@ -22,7 +22,7 @@ export const GifExpertApp = () => {
         <GifGrid
           key={name}
           category={name}
-          limit={limit} // Pasamos el límite al componente
+          limit={limit} 
         />
       ))}
     </>

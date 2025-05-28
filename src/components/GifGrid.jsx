@@ -6,13 +6,13 @@ export const GifGrid = ({ category, limit }) => {
   const [images, setImages] = useState([]);
 
   const getImages = async () => {
-    const newImages = await getGifs(category, limit); // Usamos el límite recibido
+    const newImages = await getGifs(category, limit); 
     setImages(newImages);
   };
 
   useEffect(() => {
     getImages();
-  }, [category, limit]); // También escucha cambios en el límite
+  }, [category, limit]); 
 
   return (
     <>

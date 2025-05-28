@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState('');
-  const [gifLimit, setGifLimit] = useState(10); // Límite por defecto
+  const [gifLimit, setGifLimit] = useState(10); 
 
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
@@ -20,7 +20,7 @@ export const AddCategory = ({ onNewCategory }) => {
 
     onNewCategory(trimmedCategory, gifLimit);
     setInputValue('');
-    setGifLimit(10); // Restablece el valor por defecto
+    setGifLimit(10); 
   };
 
   return (
@@ -39,7 +39,7 @@ export const AddCategory = ({ onNewCategory }) => {
         min="1"
         max="50"
       />
-      <button hidden type="submit">Buscar</button> {/* Este botón es clave */}
+      <button hidden type="submit">Buscar</button>
     </form>
   );
 };
