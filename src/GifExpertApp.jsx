@@ -1,36 +1,30 @@
-import React  from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AddCategory, GifGrid } from "./components";
 
 export const GifExpertApp = () => {
+  // Ahora cada categoría es un objeto con nombre y límite
+  const [categories, setCategories] = useState([{ name: 'One Punch', limit: 10 }]);
 
-    const [categories, setCategories] = useState([ 'One Punch' ]);
-    const onAddCategory =(newCategory) =>{
-        console.log(newCategory);
-        // categories.push('Valorant');
-        if(categories.includes(newCategory)) return;
-        setCategories( [ newCategory, ...categories ] );
-        // setCategories(cat => [...cat, 'Valorant']);
-    }
-   
-    return (
-        <>
+  const onAddCategory = (newCategory, limit) => {
+    // Evita duplicados por nombre
+    if (categories.some(cat => cat.name === newCategory)) return;
 
-        <h1>GifExpertApp</h1>
+    setCategories([{ name: newCategory, limit }, ...categories]);
+  };
 
+  return (
+    <>
+      <h1>GifExpertApp</h1>
 
-        <AddCategory
+      <AddCategory onNewCategory={onAddCategory} />
 
-        onNewCategory = { (value) => onAddCategory(value)}
+      {categories.map(({ name, limit }) => (
+        <GifGrid
+          key={name}
+          category={name}
+          limit={limit} // Pasamos el límite al componente
         />
-
-            {categories.map((category) => 
-                ( <GifGrid 
-                    key = { category }
-                    category={category}
-                    />
-                ))
-        }
-                </>
-    )
-}
+      ))}
+    </>
+  );
+};
