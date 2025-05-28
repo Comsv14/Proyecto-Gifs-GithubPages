@@ -39,6 +39,7 @@ export const AddCategory = ({ onNewCategory }) => {
         min="1"
         max="50"
       />
+      <button hidden type="submit">Buscar</button> {/* Este botón es clave */}
     </form>
   );
 };
